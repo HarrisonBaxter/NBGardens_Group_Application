@@ -12,9 +12,6 @@ case class PurchaseOrder( dId :Int, dtMade :String, sup :String, var status: Pur
 
 object PurchaseOrder{
 
-var purchaseOrders = ArrayBuffer(PurchaseOrder(1, "16 JUN 2016 10:58", "Gnomes R Us", _,"Not Delivered"),
-PurchaseOrder(2, "10 JUN 2016 10:58", "Gnomes R Us", _, "Not Delivered"),
-PurchaseOrder(3, "1 JUN 2016 10:58", "Gnomes R Us", _, "Not Delivered"),
-PurchaseOrder(4, "4 JUN 2016 10:58", "Gnomes R Us", _, "Not Delivered"))
+var purchaseOrders = DataDump.getPurchaseOrders
 }
 
