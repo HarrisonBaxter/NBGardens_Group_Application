@@ -88,10 +88,10 @@ object DataDump {
   def getPurchaseOrders: ArrayBuffer[PurchaseOrder] = {
 
     ArrayBuffer(
-                      PurchaseOrder(1, "16 JUN 2016 10:58", "Gnomes R Us", "Purchased", "Not Delivered"),
-                      PurchaseOrder(2, "10 JUN 2016 10:58", "Gnomes R Us", "Purchased", "Not Delivered"),
-                      PurchaseOrder(3, "1 JUN 2016 10:58", "Gnomes R Us", "Delivered", "6 JUN 2016 16:23"),
-                      PurchaseOrder(4, "4 JUN 2016 10:58", "Gnomes R Us", "Delivered", "9 JUN 2016 12:26")
+                      PurchaseOrder(1, "16 JUN 2016 10:58", "Gnomes R Us", PurchaseOrderStatus.Ordered, "Not Delivered"),
+                      PurchaseOrder(2, "10 JUN 2016 10:58", "Gnomes R Us", PurchaseOrderStatus.Ordered, "Not Delivered"),
+                      PurchaseOrder(3, "1 JUN 2016 10:58", "Gnomes R Us", PurchaseOrderStatus.Delivered, "6 JUN 2016 16:23"),
+                      PurchaseOrder(4, "4 JUN 2016 10:58", "Gnomes R Us", PurchaseOrderStatus.Delivered, "9 JUN 2016 12:26")
     )
   }
 

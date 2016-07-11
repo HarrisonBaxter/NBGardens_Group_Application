@@ -30,7 +30,7 @@ case class PurchaseOrderList() {
 
   def printAllStockPurchases(): Unit ={
     for (s <- purchaseOrders){
-      println ("StockPurchaseID: " + s.dId + ", Status: " + s.sta + ", Date Delivered: " + s.dtDelivered)
+      println ("StockPurchaseID: " + s.dId + ", Status: " + s.status + ", Date Delivered: " + s.dtDelivered)
     }
   }
 
@@ -38,7 +38,7 @@ case class PurchaseOrderList() {
   def processDelivery(stock:Inventory, delId:Int, date:String){
     //Stock Purchase status needs to be updated to Delivered with a date/time inputted
     val sp = findPoById(delId)
-    updateStockPurchase(PurchaseOrder(sp.get.dId, sp.get.dtMade, sp.get.sup, "Delivered", date))
+    updateStockPurchase(PurchaseOrder(sp.get.dId, sp.get.dtMade, sp.get.sup, PurchaseOrderStatus.Delivered, date))
 
     //each inventory item quantity needs to be incremented as per purchase order/delivery
     val productList: List[InventoryItem] = stock.list.toList
@@ -50,7 +50,7 @@ case class PurchaseOrderList() {
     }
 
     val sp2 = findPoById(delId)
-    println{"StockPurchaseID: " + sp2.get.dId + ", Date Made: " + sp2.get.dtMade + ", Supplier: " +  sp2.get.sup + ", Status: " + sp2.get.sta + ", Date Delivered: " +  sp2.get.dtDelivered}
+    println{"StockPurchaseID: " + sp2.get.dId + ", Date Made: " + sp2.get.dtMade + ", Supplier: " +  sp2.get.sup + ", Status: " + sp2.get.status + ", Date Delivered: " +  sp2.get.dtDelivered}
 
     stock.printProductInfo2(stock)
   }
