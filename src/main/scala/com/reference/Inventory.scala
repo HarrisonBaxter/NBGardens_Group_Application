@@ -39,8 +39,8 @@ case class Inventory () {
   def decrementStock(orderID: Int, deduction: Int, porouswareDeduction: Int): Unit = {
 
     val item = this.findProduct(orderID).get
-    item.quantity -= deduction
-    item.porouswareQuantity -= porouswareDeduction
+   // item.quantity -= deduction
+    //item.porouswareQuantity -= porouswareDeduction
   }
 
 
@@ -62,8 +62,8 @@ case class Inventory () {
 
 
   def incrementStock(itemID: Int, increase: Int): Unit = {
-    var product = this.findProduct(itemID).get
-    product.quantity += increase
+    //var product = this.findProduct(itemID).get
+    //product.quantity += increase
 
   }
 
