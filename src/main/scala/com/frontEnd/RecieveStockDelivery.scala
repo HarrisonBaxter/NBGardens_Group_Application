@@ -2,7 +2,7 @@ package com.frontEnd
 import com.Launcher
 import com.backEnd.PurchaseOrder
 import com.frontEnd.MainMenu
-import com.reference.GUI
+import com.reference.{GUI, OrderStatus}
 
 import scalafx.scene.Scene
 import scalafx.scene.control._
@@ -17,7 +17,7 @@ import scalafx.event.ActionEvent
 class RecieveStockDelivery extends Scene {
   private val back = new Button("back")
   var stockDeliveries = PurchaseOrder.purchaseOrders
-  def CreateDeliveryBuffer (): ObservableBuffer[PurchaseOrder] = {
+  def CreateDeliveryBuffer :ObservableBuffer[PurchaseOrder] = {
 
     val deliveryBuffer = ObservableBuffer[PurchaseOrder](
     )
@@ -41,13 +41,17 @@ var table = new TableView[PurchaseOrder](CreateDeliveryBuffer)
   var col3 = new TableColumn[PurchaseOrder, String]("Company")
   col3.cellValueFactory = cdf => StringProperty(cdf.value.sup)
 
-  var col4 = new TableColumn[PurchaseOrder, String]("Status")
-  col4.cellValueFactory  = cdf => StringProperty(cdf.value.sta)
+//  var col4 = new TableColumn[PurchaseOrder, String]("Status")
+//  col4.cellValueFactory  = cdf => StringProperty(cdf.value.sta)
+  var col4 = new TableColumn[PurchaseOrder, PurchaseOrder]
+
 
   var col5 = new TableColumn[PurchaseOrder, String]("Date Delivered")
   col5.cellValueFactory = cdf => StringProperty(cdf.value.dtDelivered)
 
-  table.columns ++= List(col1, col2, col3, col4, col5)
+  table.columns ++= List(col1, col2, col3, col4, col5
+
+
 
 
 
