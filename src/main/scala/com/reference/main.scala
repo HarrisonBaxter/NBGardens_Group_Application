@@ -3,7 +3,7 @@ package com.reference
 /**
   * Created by MacZ on 16/06/2016.
   */
-import com.backEnd.{DataDump, OrderList, PurchaseOrderList}
+import com.backEnd.{DataDump, OrderList, PurchaseOrderList, WorkerList}
 
 import scala.Array._
 import scala.collection.mutable.{ArrayBuffer, Stack}
@@ -12,6 +12,7 @@ import scala.collection.mutable.{ArrayBuffer, Stack}
 object main1 {
 
   val workerList = DataDump.getWorkers
+  var currentWorker = WorkerList(null,null)
 
   var OrderList1 = new OrderList()
   var Stock = Inventory()
@@ -24,9 +25,6 @@ object main1 {
   //OrderListOfficial
   var valid = false
   var continue = false
-
-
-  var currentWorker = new CurrentWorker(null, null, null)
 
   def main(args: Array[String]) {
 
@@ -239,13 +237,13 @@ object main1 {
     //for (i <- 0 to (list.length - 1)) {
     for (item <- workerList) {
 
-      if (item.username.toLowerCase() == inputUser.toLowerCase()) {
+      if (item.userName.toLowerCase() == inputUser.toLowerCase()) {
 
 
         if (item.password.toLowerCase() == inputPass.toLowerCase()) {
 
-          response = "Account confirmed, Welcome " + item.username
-          currentWorker = new CurrentWorker(item.username, item.password, item.accounttype)
+          response = "Account confirmed, Welcome " + item.userName
+          currentWorker = WorkerList(item.userName, item.password)
           valid = true
           continue = true
         }
@@ -255,7 +253,7 @@ object main1 {
 
         }
 
-      } else if (item.username.toLowerCase() != inputUser.toLowerCase()) {
+      } else if (item.userName.toLowerCase() != inputUser.toLowerCase()) {
         response = "Invalid entry, please check and try again"
       }
     }
@@ -274,11 +272,11 @@ object main1 {
   }
 
   def accountTypeCheck(): String = {
-    val neededString = currentWorker.getCurrentWorker() //gets String of current worker for processing later
-    val accountType = neededString(0)(2) //gets account type String to use later
+    val neededString = currentWorker.toString() //gets String of current worker for processing later
+    val accountType = neededString(0) //gets account type String to use later
 
 
-    accountType //returns current account type
+    accountType.toString //returns current account type
   }
 
   def updateOrderList(): Unit = OrderListOfficial = OrderList1.getOrderList
