@@ -10,8 +10,8 @@ object DataDump {
 
   //A list of users which can use the system
 
-  new UserAccounts("Robert", "1234")
-  new UserAccounts("Harrison", "4321")
+//  new UserAccounts("Robert", "1234")
+//  new UserAccounts("Harrison", "4321")
 
   def getOrders: ArrayBuffer[Order] = {
 
