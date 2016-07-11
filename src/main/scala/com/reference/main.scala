@@ -297,7 +297,7 @@ object main1 {
 
         val deduction = i.quantity
         val porouswareDeduction = i.porouswareQuantity
-        Stock.decrementStock(i.pid, deduction, porouswareDeduction)
+        //Stock.decrementStock(i.pid, deduction, porouswareDeduction)
       }
   }
 
