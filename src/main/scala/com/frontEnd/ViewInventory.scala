@@ -39,7 +39,8 @@ class ViewInventory extends Scene {
   }
 
 
-  var table = new TableView[InventoryItem](CreateInventoryBuffer)
+  var table = new TableView[InventoryItem](CreateInventoryBuffer) {
+  }
   val col1 = new TableColumn[InventoryItem, String]("Name")
   col1.cellValueFactory = cdf => ObjectProperty(cdf.value.name)
 

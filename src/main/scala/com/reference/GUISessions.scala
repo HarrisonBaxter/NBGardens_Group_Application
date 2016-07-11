@@ -23,9 +23,9 @@ object GUISessions extends JFXApp {
     val result = dialog.showAndWait()
 
     result match {
-      case Some("Check order list") => GUI.PrintOrderList
+//      case Some("Check order list") => GUI.PrintOrderList
       case Some("Choose/pick order") => chooseOrder
-      case Some("Check order items") => GUI.PrintOrder_items
+//      case Some("Check order items") => GUI.PrintOrder_items
       case None => println("No selection1")
         GUI.onShowLoginDialog()
     }

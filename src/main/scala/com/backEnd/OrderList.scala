@@ -28,7 +28,7 @@ class OrderList(){
 
 
     for (i <- list.indices ){
-      println("com.backEnd.Order ID : " + list(i).id + " | Status : " + list(i).status)
+      println("Order ID : " + list(i).id + " | Status : " + list(i).status)
     }
   }
 
@@ -53,22 +53,22 @@ class OrderList(){
 
   def orderAllocation(input: Int): Unit = {
 
-    list(input).status = OrderStatus.Allocated
+    list(input).status == OrderStatus.Allocated
   }
 
   def markedShipped(itemID : Int): Unit = {
 
-    list(itemID).status = OrderStatus.Shipped
+    list(itemID).status == OrderStatus.Shipped
   }
 
   def markOrdered(itemID : Int): Unit = {
 
-    list(itemID).status = OrderStatus.Ordered
+    list(itemID).status == OrderStatus.Ordered
   }
 
   def markedDelivered(itemID : Int): Unit = {
 
-    list(itemID).status = OrderStatus.Delivered
+    list(itemID).status == OrderStatus.Delivered
     removeOrder(itemID)
   }
 
@@ -81,7 +81,7 @@ class OrderList(){
     delete onSuccess {
       case f =>
         list -= list(itemID)
-        println("com.backEnd.Order " + itemID + " deleted")
+        println("Order " + itemID + " deleted")
     }
     println("Deleting")
   }

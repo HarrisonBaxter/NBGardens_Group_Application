@@ -27,25 +27,25 @@ object GUI extends JFXApp {
     )
 
     for(i<- DataList){
-      OrderBuffer += new GUIOrder((i).id.toString, (i).status.toString)
+      OrderBuffer += new GUIOrder((i).id, (i).status.toString)
 
     }
     OrderBuffer
   }
 
   //creating buffer for use in GUI
-  def CreateOrderItembuffer (): ObservableBuffer[GUIOrderItems] = {
-
-    val OrderBuffer = ObservableBuffer[GUIOrderItems ](
-    )
-
-    for(i<- DataList(1).orderitems){//change 1 to specify what order you want
-      OrderBuffer += new GUIOrderItems ((i).pid.toString, main1.Stock.findProduct(i.pid).get.name, (i).quantity.toString,(i). porouswareQuantity.toString)
-    }
-    OrderBuffer
-  }
-  onShowLoginDialog
-  //Shows login GUI
+//  def CreateOrderItembuffer (): ObservableBuffer[GUIOrderItems] = {
+//
+//    val OrderBuffer = ObservableBuffer[GUIOrderItems ](
+//    )
+//
+//    for(i<- DataList(1).orderitems){//change 1 to specify what order you want
+//      OrderBuffer += new GUIOrderItems ((i).pid.toString, main1.Stock.findProduct(i.pid).get.name, (i).quantity.toString,(i). porouswareQuantity.toString)
+//    }
+//    OrderBuffer
+//  }
+//  onShowLoginDialog
+//  //Shows login GUI
 
   def onShowLoginDialog(): Unit = {
 
@@ -140,85 +140,74 @@ object GUI extends JFXApp {
   //goes to GUISession object
 
   //Prints OrderTable
-  def PrintOrderList(): Unit = {
-
-
-    stage = new PrimaryStage {
-      title = "TableView with custom color cell"
-      scene = new Scene {
-        //gets buffer from CreateOrderbuffer method
-        content = new TableView[GUIOrder](CreateOrderbuffer) {
-          columns ++= List(
-            new TableColumn[GUIOrder, String] {
-              text = "com.backEnd.Order ID"
-              cellValueFactory = {_.value.ID}
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrder, String]() {
-              text = "status"
-              cellValueFactory = {_.value.Status}
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrder, String] {
-              text = "Login"
-              cellValueFactory = {
-                _.value.Status
-              }
-              cellFactory = { _ =>
-                new TableCell[GUIOrder, String] {
-                  item.onChange { (_, _, newColor) =>
-                    graphic = new Button {
-                      text = "Exit"
-                      onAction = {
-                        (e: ActionEvent) => GUISessions.standard
-                      }
-                    }
-                  }
-                }
-              }
-            }//column containing buttons on each row, contained within a TableCell
-          )
-
-        }
-
-        //button here
-      }
-    }
-  }
-
-  def PrintOrder_items(): Unit = {
-
-    stage = new PrimaryStage {
-      title = "TableView with custom color cell"
-      scene = new Scene {
-        content = new TableView[GUIOrderItems](CreateOrderItembuffer) {
-          columns ++= List(
-            new TableColumn[GUIOrderItems, String] {
-              text = "ID"
-              cellValueFactory = {_.value.ID}
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrderItems, String] {
-              text = "Item"
-              cellValueFactory = {_.value.Item}
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrderItems, String] {
-              text = "Quantity"
-              cellValueFactory = {_.value.Quantity}
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrderItems, String]() {
-              text = "PorousQuntuty"
-              cellValueFactory = {_.value.PorousQuantity
-              }
-              prefWidth = 100
-            }
-          )
-        }
-      }
-    }
-  }
+//  def PrintOrderList(): Unit = {
+//
+//
+//    stage = new PrimaryStage {
+//      title = "TableView with custom color cell"
+//      scene = new Scene {
+//        //gets buffer from CreateOrderbuffer method
+//        content = new TableView[GUIOrder](CreateOrderbuffer) {
+//          columns ++= List(
+//            new TableColumn[GUIOrder, String] {
+//              text = "com.backEnd.Order ID"
+//              cellValueFactory = {_.value.ID}
+//              prefWidth = 100
+//            },
+//            new TableColumn[GUIOrder, String]() {
+//              text = "status"
+//              cellValueFactory = {_.value.Status}
+//              prefWidth = 100
+//            },
+//            new TableColumn[GUIOrder, String] {
+//              text = "Login"
+//              cellValueFactory = {
+//                _.value.Status
+//              }
+//
+//            }//column containing buttons on each row, contained within a TableCell
+//          )
+//
+//        }
+//
+//        //button here
+//      }
+//    }
+//  }
+//
+//  def PrintOrder_items(): Unit = {
+//
+//    stage = new PrimaryStage {
+//      title = "TableView with custom color cell"
+//      scene = new Scene {
+//        content = new TableView[GUIOrderItems](CreateOrderItembuffer) {
+//          columns ++= List(
+//            new TableColumn[GUIOrderItems, String] {
+//              text = "ID"
+//              cellValueFactory = {_.value.ID}
+//              prefWidth = 100
+//            },
+//            new TableColumn[GUIOrderItems, String] {
+//              text = "Item"
+//              cellValueFactory = {_.value.Item}
+//              prefWidth = 100
+//            },
+//            new TableColumn[GUIOrderItems, String] {
+//              text = "Quantity"
+//              cellValueFactory = {_.value.Quantity}
+//              prefWidth = 100
+//            },
+//            new TableColumn[GUIOrderItems, String]() {
+//              text = "PorousQuntuty"
+//              cellValueFactory = {_.value.PorousQuantity
+//              }
+//              prefWidth = 100
+//            }
+//          )
+//        }
+//      }
+//    }
+//  }
 }
 
 //test

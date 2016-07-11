@@ -15,6 +15,7 @@ class MainMenu extends Scene {
   private val viewOrders = new Button("Orders")
   private val viewInventory = new Button("Inventory")
   private val recieveAStockDelivery = new Button("Recieve a Delivery")
+  private val viewItems = new Button("View Line Items")
   private val logOut = new Button("Logout")
 
 
@@ -34,10 +35,14 @@ class MainMenu extends Scene {
     Launcher.stage.scene = new RecieveStockDelivery()
   }
 
+  viewItems.onAction = (event: ActionEvent) =>{
+    Launcher.stage.scene = new ViewItems()
+  }
+
   logOut.onAction = (event: ActionEvent) => {
     Launcher.stage.scene = new Login()
   }
 
 
-  root = new VBox(viewOrders, viewInventory, recieveAStockDelivery, logOut)
+  root = new VBox(viewOrders, viewInventory, recieveAStockDelivery, viewItems, logOut)
 }

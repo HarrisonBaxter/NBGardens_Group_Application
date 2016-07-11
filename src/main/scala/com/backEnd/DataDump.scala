@@ -10,8 +10,7 @@ object DataDump {
 
   //A list of users which can use the system
 
-  new UserAccounts("Robert", "1234")
-  new UserAccounts("Harrison", "4321")
+
 
   def getOrders: ArrayBuffer[Order] = {
 
@@ -58,7 +57,7 @@ object DataDump {
     val order13 = Order(13, OrderStatus.Ordered, ArrayBuffer(ol14, ol19, ol20))
     val order14 = Order(14, OrderStatus.Ordered, ArrayBuffer(ol15, ol21))
 
-    ArrayBuffer(
+     ArrayBuffer(
       order1,order2,order3,order4,order5,order6,order7,order8,order9,order10,order11,order12,order13,order14
     )
   }

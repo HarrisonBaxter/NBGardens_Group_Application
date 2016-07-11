@@ -5,6 +5,6 @@ package com.reference
   */
 object OrderStatus extends Enumeration {
 
-  val Ordered, Allocated, Shipped, Delivered = Value
+  var Ordered, Allocated, Shipped, Delivered = Value
 
 }

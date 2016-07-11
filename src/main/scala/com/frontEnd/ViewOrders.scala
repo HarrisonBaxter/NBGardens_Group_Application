@@ -1,6 +1,7 @@
 package com.frontEnd
 
 import com.Launcher
+import com.backEnd.{InventoryItem, Order}
 import com.frontEnd.{GUIOrder, MainMenu}
 import com.reference.{GUI, main1}
 
@@ -9,6 +10,7 @@ import scalafx.scene.control.{TableCell, _}
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.Includes._
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.event.ActionEvent
 import scalafx.scene.control.TableColumn._
@@ -19,57 +21,32 @@ class ViewOrders extends Scene {
   private val back = new Button("back")
   var DataList = main1.OrderListOfficial
 
-  /*def CreateOrderbuffer(): ObservableBuffer[GUIOrder] = {
+  def CreateOrderbuffer (): ObservableBuffer[GUIOrder] = {
 
     val OrderBuffer = ObservableBuffer[GUIOrder](
     )
 
-    for (i <- DataList) {
-      OrderBuffer += new GUIOrder((i).id.toString, (i).status.toString)
+    for(i<- DataList){
+      OrderBuffer += new GUIOrder(i.id, i.status.toString)
 
     }
     OrderBuffer
-  }*/
+  }
 
+  var table = new TableView[GUIOrder](CreateOrderbuffer) {
+  }
+  val col1 = new TableColumn[GUIOrder, Int]("ID")
+  col1.cellValueFactory = cdf => ObjectProperty(cdf.value.id)
 
- new TableView[GUIOrder] {
-          columns ++= List(
-            new TableColumn[GUIOrder, String] {
-              text = "Order ID"
-              cellValueFactory = {
-                _.value.ID
-              }
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrder, String]() {
-              text = "status"
-              cellValueFactory = {
-                _.value.Status
-              }
-              prefWidth = 100
-            },
-            new TableColumn[GUIOrder, String] {
-              text = "Login"
-              cellValueFactory = {
-                _.value.Status
-              }
+  val col2 = new TableColumn[GUIOrder, String]("Status")
+  col2.cellValueFactory = cdf => ObjectProperty(cdf.value.status)
 
-            } //column containing buttons on each row, contained within a TableCell
-          )
-
-        }
-
-
-
-
-
-
-
+  table.columns ++= List(col1, col2)
 
   back.onAction = (event: ActionEvent) => {
     Launcher.stage.scene = new MainMenu()
   }
 
-  root = new HBox(back)
+  root = new VBox(back, table)
 }
 
