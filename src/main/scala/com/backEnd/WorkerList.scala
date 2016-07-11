@@ -10,7 +10,7 @@ case class WorkerList (userName: String, password: String){
 }
 
 object WorkerList{
-  private val workerList = Array(WorkerList("Harrison", "1234"))
+  private val workerList = DataDump.getWorkers
 
   def findWorker (userName: String): Array[WorkerList] ={
     def lookList (list: Array[WorkerList]): Array[WorkerList] ={
