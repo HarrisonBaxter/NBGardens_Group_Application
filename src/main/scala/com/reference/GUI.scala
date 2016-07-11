@@ -111,7 +111,7 @@ object GUI extends JFXApp {
 
       def GUIcontinue(userr: String, passs: String): Unit = {
         var accountType = ""
-        main1.checkWorker(userr, passs)
+//        main1.checkWorker(userr, passs)
 
         accountType = main1.accountTypeCheck()
 

@@ -95,9 +95,9 @@ object DataDump {
     )
   }
 
-  def getWorkers: ArrayBuffer[WorkerList] = {
+  def getWorkers: Array[WorkerList] = {
 //    ArrayBuffer(WorkerList("Robert, "1234", "standard", 20.30), Worker("James", "1234", "standard", 30.30), Worker("Tom", "1234", "admin", 10.32))
-    ArrayBuffer(WorkerList("Harrison", "1234"), WorkerList("Mark", "1234"), WorkerList("Jackie", "1234"), WorkerList("Zeph", "1234"), WorkerList("Paul", "1234"))
+    Array(WorkerList("Harrison", "1234"), WorkerList("Mark", "1234"), WorkerList("Jackie", "1234"), WorkerList("Zeph", "1234"), WorkerList("Paul", "1234"))
 
   }
 
