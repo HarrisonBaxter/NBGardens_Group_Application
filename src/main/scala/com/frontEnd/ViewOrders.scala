@@ -21,27 +21,29 @@ class ViewOrders extends Scene {
   private val back = new Button("back")
   var DataList = main1.OrderListOfficial
 
-  def CreateOrderbuffer (): ObservableBuffer[GUIOrder] = {
+  def CreateOrderbuffer (): ObservableBuffer[Order] = {
 
-    val OrderBuffer = ObservableBuffer[GUIOrder](
+    val OrderBuffer = ObservableBuffer[Order](
     )
 
     for(i<- DataList){
-      OrderBuffer += new GUIOrder(i.id, i.status.toString)
+      OrderBuffer += new Order(i.id, i.status, i.orderitems)
 
     }
     OrderBuffer
   }
 
-  var table = new TableView[GUIOrder](CreateOrderbuffer) {
+  var table = new TableView[Order](CreateOrderbuffer) {
   }
-  val col1 = new TableColumn[GUIOrder, Int]("ID")
+  val col1 = new TableColumn[Order, Int]("ID")
   col1.cellValueFactory = cdf => ObjectProperty(cdf.value.id)
 
-  val col2 = new TableColumn[GUIOrder, String]("Status")
+  val col2 = new TableColumn[Order, Enum]("Status")
   col2.cellValueFactory = cdf => ObjectProperty(cdf.value.status)
 
-  table.columns ++= List(col1, col2)
+  val ccl3 = new TableColumn[Order, ObservableBuffer]("Order Lines")
+  ccl3.cellValueFactory = cdf => ObjectProperty(cdf.value.orderitems)
+  table.columns ++= List(col1, col2, ccl3)
 
   back.onAction = (event: ActionEvent) => {
     Launcher.stage.scene = new MainMenu()

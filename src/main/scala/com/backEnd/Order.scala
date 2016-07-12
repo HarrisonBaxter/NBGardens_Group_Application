@@ -3,11 +3,12 @@ package com.backEnd
 import com.reference.OrderStatus
 
 import scala.collection.mutable.ArrayBuffer
+import scalafx.collections.ObservableBuffer
 
 /**
   * Created by MacZ on 15/06/2016.
   */
-case class Order (id: Int, status : OrderStatus.Value, orderitems: ArrayBuffer[OrderLine]){
+case class Order (id: Int, status : OrderStatus.Value, orderitems: ObservableBuffer[OrderLine]){
 
   def addOrderLineItem(ol: OrderLine): Unit = {
     orderitems += ol
