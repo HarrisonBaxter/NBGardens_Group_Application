@@ -41,18 +41,6 @@ class InventoryItemTest extends FlatSpec with Inside with Matchers{
   }
   println("Item Expected Fail Completed")
 
-    /*
-  inside(itemExample){case com.backEnd.InventoryItem(id, name, quantity, porouswareQuantity, location) =>
-      id should be (1)
 
-
-  }
-
-
-  val testItem = new com.backEnd.InventoryItem(1, "Gnome", 1, 1, 1.1)
-
-  */
-
-  //val testItem = new com.backEnd.InventoryItem()
 
 }
