@@ -60,12 +60,4 @@ class OrderListTest extends FunSuite with Inside with Matchers{
   }
 
 
-
-
-  test("Remove com.backEnd.Order"){
-
-
-  }
-
-
 }
