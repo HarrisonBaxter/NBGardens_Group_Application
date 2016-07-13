@@ -33,19 +33,19 @@ object GUI extends JFXApp {
     OrderBuffer
   }
 
-  //creating buffer for use in GUI
-//  def CreateOrderItembuffer (): ObservableBuffer[GUIOrderItems] = {
-//
-//    val OrderBuffer = ObservableBuffer[GUIOrderItems ](
-//    )
-//
-//    for(i<- DataList(1).orderitems){//change 1 to specify what order you want
-//      OrderBuffer += new GUIOrderItems ((i).pid.toString, main1.Stock.findProduct(i.pid).get.name, (i).quantity.toString,(i). porouswareQuantity.toString)
-//    }
-//    OrderBuffer
-//  }
-//  onShowLoginDialog
-//  //Shows login GUI
+//  creating buffer for use in GUI
+  def CreateOrderItembuffer (): ObservableBuffer[GUIOrderItems] = {
+
+    val OrderBuffer = ObservableBuffer[GUIOrderItems ](
+    )
+
+    for(i<- DataList(1).orderitems){//change 1 to specify what order you want
+      OrderBuffer += new GUIOrderItems ((i).pid, main1.Stock.findProduct(i.pid).get.name, (i).quantity,(i). porouswareQuantity)
+    }
+    OrderBuffer
+  }
+  onShowLoginDialog
+  //Shows login GUI
 
   def onShowLoginDialog(): Unit = {
 

@@ -2,6 +2,8 @@ package com.backEnd
 
 import com.reference.{OrderStatus, Worker}
 
+import scalafx.collections.ObservableBuffer
+
 /**
   * Created by Mark K on 30/06/2016.
   */
@@ -9,8 +11,6 @@ object DataDump {
   import scala.collection.mutable.ArrayBuffer
 
   //A list of users which can use the system
-
-
 
   def getOrders: ArrayBuffer[Order] = {
 

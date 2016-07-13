@@ -4,7 +4,8 @@ package com.frontEnd
 import com.Launcher
 import com.backEnd.{InventoryItem, Order}
 import com.frontEnd.{GUIOrder, MainMenu}
-import com.reference.{GUI, main1}
+import com.reference.GUISessions._
+import com.reference.{GUI, OrderStatus, main1}
 
 import scalafx.scene.Scene
 import scalafx.scene.control.{TableCell, _}
@@ -22,10 +23,40 @@ import scalafx.scene.control.TableColumn._
 class ViewItems extends Scene {
   private val back = new Button("back")
   var DataList = main1.OrderListOfficial
+  def chooseOrder(): Unit = {
+
+    var checked = false
+
+    // while (!checked) {
+
+    val Choosedialog = new TextInputDialog(defaultValue = "E.g. 2") {
+      initOwner(stage)
+      title = "com.backEnd.Order Allocation"
+      headerText = "What order would you like to assign to yourself?"
+      contentText = "Enter order ID:"
+    }
+
+    var result = Choosedialog.showAndWait()
+
+    result match {
+      case Some(result) => choosecontinue(result.toInt)
+      case None => standard
+    }
+
+    def choosecontinue(example : Int): Unit = {
+
+
+
+      main1.updateOrderList()
+      main1.decrementStock(example)
+
+    }
+
+  }
 
   def CreateOrderItembuffer (): ObservableBuffer[GUIOrderItems] = {
 
-    val OrderBuffer = ObservableBuffer[GUIOrderItems ](
+    val OrderBuffer = ObservableBuffer[GUIOrderItems](
     )
 
     for(i<- DataList(1).orderitems){//change 1 to specify what order you want

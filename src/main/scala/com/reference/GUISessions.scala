@@ -49,7 +49,7 @@ object GUISessions extends JFXApp {
 
     result match {
       case Some(result) => choosecontinue(result.toInt)
-      case None => standard
+
     }
 
     def choosecontinue(example : Int): Unit = {
@@ -60,11 +60,11 @@ object GUISessions extends JFXApp {
       }
 
       main1.OrderList1.orderAllocation(example-1)
-      main1.updateOrderList()
-      main1.decrementStock(example)
 
+      main1.decrementStock(example)
+      main1.updateOrderList()
     }
-    standard
+
     // }
   }
 }

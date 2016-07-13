@@ -7,6 +7,7 @@ import com.backEnd.{DataDump, OrderList, PurchaseOrderList, WorkerList}
 
 import scala.Array._
 import scala.collection.mutable.{ArrayBuffer, Stack}
+import scalafx.collections.ObservableBuffer
 
 //small changed changed again via VM
 object main1 {
@@ -284,18 +285,18 @@ object main1 {
 
 
 
-  def decrementStock(orderID: Int): Unit = {
+  def decrementStock(example: Int): Unit = {
 
     OrderListOfficial = OrderList1.getOrderList
     //StockListOfficial = Stock.getInventoryList()
 
-    val order = OrderList1.findOrder(orderID).get
+    val order = OrderList1.findOrder(example).get
 
       for (i <- order.orderitems) {
 
         val deduction = i.quantity
         val porouswareDeduction = i.porouswareQuantity
-        //Stock.decrementStock(i.pid, deduction, porouswareDeduction)
+        Stock.decrementStock(i.pid, deduction, porouswareDeduction)
       }
   }
 

@@ -19,7 +19,7 @@ class OrderList(){
     for (order <- list) {
       println(s"ORDER ${order.id} ITEMS\n------------------\n")
       for (i <- order.orderitems) {
-        println("ProductID:\t" + i.pid + "\nProduct Name: " + products.findProduct(i.pid).get.name + "\nQuantity:\t" + i.quantity + "\nPorousware Quantity:\t" + i.porouswareQuantity+"\n------------------\n")
+        println("ProductID:\t" + i.pid+ "\nProduct Name: " + products.findProduct(i.pid).get.name + "\nQuantity:\t" + i.quantity + "\nPorousware Quantity:\t" + i.porouswareQuantity+"\n------------------\n")
 
       }
     }

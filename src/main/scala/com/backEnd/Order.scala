@@ -8,20 +8,32 @@ import scalafx.collections.ObservableBuffer
 /**
   * Created by MacZ on 15/06/2016.
   */
-case class Order (id: Int, status : OrderStatus.Value, orderitems: ObservableBuffer[OrderLine]){
+case class Order(id: Int, status: OrderStatus.Value, orderitems: ArrayBuffer[OrderLine]) {
 
-  def addOrderLineItem(ol: OrderLine): Unit = {
-    orderitems += ol
-  }
+  def decrementStock(example: Int): Unit ={
 
-  def getOrderItems(): Unit = {
-    for (i <- this.orderitems) {
-      println(s"ORDER ${this.id} ITEMS\n------------------\nProductID:\t" + i.pid + "\nQuantity:\t" + i.quantity + "\nPorousware Quantity:\t" + i.porouswareQuantity+"\n------------------\n")
-
-
-    }
   }
 }
+
+object Order {
+
+  var orders:ArrayBuffer[Order] = DataDump.getOrders
+
+//  def addOrderLineItem(ol: OrderLine): Unit = {
+//    orderitems += ol
+//  }
+
+//  def findById(id: Int) = orderitems.find(_.pid == id)
+
+
+//  def getOrderItems(): Unit = {
+//    for (i <- this.orderitems) {
+//      println(s"ORDER ${this.id} ITEMS\n------------------\nProductID:\t" + i.pid + "\nQuantity:\t" + i.quantity + "\nPorousware Quantity:\t" + i.porouswareQuantity + "\n------------------\n")
+//
+//
+//    }
+//  }
+//}
 
 //object Order{
 //  var myOrders = ArrayBuffer(Order(1,OrderStatus.Ordered, ArrayBuffer(ol1,ol17)),
@@ -39,4 +51,4 @@ case class Order (id: Int, status : OrderStatus.Value, orderitems: ObservableBuf
 //  Order(13, OrderStatus.Ordered, ArrayBuffer(ol14, ol19, ol20)),
 //  Order(14, OrderStatus.Ordered, ArrayBuffer(ol15, ol21)))
 //
-//}
+}
